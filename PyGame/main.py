@@ -14,18 +14,18 @@ class Main():
         pygame.mouse.set_visible(False)
         
         self.view = pygame.display.set_mode(SIZE)
-        self.state = STATE_MENU
+        self.state = STATE_PLAY # STATE_MENU
         self.menuController = MenuController()
         self.gameController = GameController()
         self.startTime = 0
         self.currentTime = 0
 
-    def run(self, runTime = 3):
+    def run(self, runTime = 10):
         self.startTime = time.time()
 
         while (self.currentTime - self.startTime < runTime):
             time.sleep(1 / FPS)
-            #self.update()
+            self.update()
             self.draw()
             self.currentTime = time.time()
         
@@ -44,7 +44,7 @@ class Main():
         self.menuController.update()
     
     def updateStatePlay(self):
-        pass
+        self.gameController.update()
     
     def updateStateDone(self):
         pass
